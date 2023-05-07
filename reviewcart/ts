@@ -1,0 +1,11 @@
+import { Component } from '@angular/core'
+
+@Component({
+  selector: 'review-cart',
+  templateUrl: 'review-cart.html',
+  styleUrls: ['review-cart.css'],
+})
+export class ReviewCart {
+  rawzu04: string = ' '
+  constructor() {}
+}
