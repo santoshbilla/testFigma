@@ -8,4 +8,39 @@ import { Component } from '@angular/core'
 export class ReviewCart {
   rawzu04: string = ' '
   constructor() {}
+  
+  const array = ['5', '6', '7', '8', 'PK3', 'PK4', '1', '2', 'Adult', '3', '4', 'K', '9', '10', '11', '12'];
+
+const customSort = (a: any, b: any): number => {
+  const order = ['PK3', 'PK4', 'K'];
+
+  if (a === 'Adult') return 1; // 'Adult' is greater than any other value
+  if (b === 'Adult') return -1; // Any other value is less than 'Adult'
+
+  // Convert strings to numbers for numerical comparison
+  const numA = Number(a);
+  const numB = Number(b);
+
+  // Check if both elements are numbers
+  if (!isNaN(numA) && !isNaN(numB)) {
+    return numA - numB; // Sort numbers in ascending order
+  }
+
+  const indexA = order.indexOf(a);
+  const indexB = order.indexOf(b);
+
+  if (indexA !== -1 && indexB !== -1) {
+    return indexA - indexB;
+  }
+
+  if (indexA === -1) return 1;
+  if (indexB === -1) return -1;
+
+  return 0;
+};
+
+array.sort(customSort);
+
+console.log(array); // Output: ['PK3', 'PK4', 'K', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', 'Adult']
+
 }
